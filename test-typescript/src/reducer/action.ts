@@ -1,10 +1,22 @@
-export const INC_NUM = "INC_NUM" as const;
-export const DEC_NUM = "DEC_NUM" as const;
+
+export enum CountType {
+    INC_NUM = "INC_NUM",
+    DEC_NUM = "DEC_NUM"
+}
 
 export const increase = ()=>({
-    type:INC_NUM
+    type:CountType.INC_NUM
 })
 
 export const decrease = ()=>({
-    type:DEC_NUM
+    type:CountType.DEC_NUM
 })
+
+export const AsyncIncrease =()=>(dispatch:any)=>{
+    setTimeout(()=>{dispatch(increase())},1000);
+}
+
+
+export const AsyncDecrease=()=>(dispatch:any)=>{
+    setTimeout(()=>{dispatch(decrease())},1000);
+}
